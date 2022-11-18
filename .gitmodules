@@ -14,7 +14,3 @@
 	path = erigon/erigon
 	url = https://github.com/roberto-bayardo/erigon
 	branch = eip-4844
-[submodule "ethereumjs"]
-	path = ethereumjs/ethereumjs
-	url = https://github.com/ethereumjs/ethereumjs-monorepo
-	branch = eip4844-tx-changes
