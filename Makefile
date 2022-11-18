@@ -10,7 +10,7 @@ devnet-up:
 lodestar-up:
 	docker compose --project-name eip4844-interop up -d\
 		execution-node\
-		execution-node-2\
+		ethereumjs\
 		lodestar-beacon-node\
 		lodestar-beacon-node-follower\
 
