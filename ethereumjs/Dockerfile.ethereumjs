@@ -1,7 +1,7 @@
 FROM node:16 as build
 WORKDIR /usr/app
 
-COPY ./ethereumjs-monorepo /usr/app
+COPY ./ethereumjs /usr/app
 
 WORKDIR /usr/app
 RUN npm i
