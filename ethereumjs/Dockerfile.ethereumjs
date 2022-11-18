@@ -4,7 +4,10 @@ WORKDIR /usr/app
 COPY ./ethereumjs /usr/app
 
 WORKDIR /usr/app
-RUN npm i
+
+# Remove prepare script since this doesn't do anything productive
+RUN npm pkg delete scripts.prepare
+RUN npm install
 
 FROM node:16
 WORKDIR /usr/app
@@ -12,7 +15,6 @@ COPY --from=build /usr/app .
 COPY ./run_ethjs.sh ./run_ethjs.sh
 COPY ./geth-genesis.json ./geth-genesis.json
 
-RUN ls
 # NodeJS applications have a default memory limit of 2.5GB.
 # This limit is bit tight, it is recommended to raise the limit
 # since memory may spike during certain network conditions.
