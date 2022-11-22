@@ -5,18 +5,18 @@
 : "${VERBOSITY:-info}"
 
 # wait for the execution node to start
-RETRIES=60
-i=0
-until curl --silent --fail "$EXECUTION_NODE_URL";
-do
-    sleep 1
-    if [ $i -eq $RETRIES ]; then
-        echo 'Timed out waiting for execution node'
-        exit 1
-    fi
-    echo 'Waiting for execution node...'
-    ((i=i+1))
-done
+#RETRIES=60
+#i=0
+#until curl --silent --fail "$EXECUTION_NODE_URL";
+#do
+#    sleep 1
+#    if [ $i -eq $RETRIES ]; then
+#        echo 'Timed out waiting for execution node'
+#        exit 1
+#    fi
+#    echo 'Waiting for execution node...'
+#    ((i=i+1))
+#done
 
 echo 'Execution client running. Starting Lodestar beacon node.'
 

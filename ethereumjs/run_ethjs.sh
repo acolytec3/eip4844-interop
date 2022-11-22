@@ -5,6 +5,7 @@ BLOCK_SIGNER_PRIVATE_KEY="45a915e4d060149eb4365960e6a7a45f334393093061116b197e32
     --gethGenesis='./geth-genesis.json' \
     --port=30305 \
     --loglevel=debug \
+    --rocDebug \
     --rpc --rpcport=8544 \
     --maxPerRequest=1 \
     --rpcEngine=true \

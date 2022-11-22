@@ -5,6 +5,7 @@ COPY ./ethereumjs /usr/app
 
 WORKDIR /usr/app
 
+RUN apt install libstdc++6
 # Remove prepare script since this doesn't do anything productive
 RUN npm pkg delete scripts.prepare
 RUN npm install

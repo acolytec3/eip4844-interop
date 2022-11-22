@@ -136,12 +136,12 @@ services:
 
   lodestar-beacon-node:
     depends_on:
-      - execution-node
+      - ethereumjs
     build:
       context: ./lodestar
       dockerfile: Dockerfile.lodestar
     environment:
-      EXECUTION_NODE_URL: http://execution-node:8545
+      EXECUTION_NODE_URL: http://ethereumjs:8551
       PROCESS_NAME: lodestar-beacon-node
     entrypoint: ['run_beacon_node.sh']
     ports:
