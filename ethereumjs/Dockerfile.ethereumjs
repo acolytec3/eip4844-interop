@@ -14,6 +14,7 @@ WORKDIR /usr/app
 COPY --from=build /usr/app .
 COPY ./run_ethjs.sh ./run_ethjs.sh
 COPY ./geth-genesis.json ./geth-genesis.json
+COPY ./minerDeets.txt ./minerDeets.txt
 
 # NodeJS applications have a default memory limit of 2.5GB.
 # This limit is bit tight, it is recommended to raise the limit

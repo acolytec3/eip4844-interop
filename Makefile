@@ -14,6 +14,11 @@ lodestar-up:
 		lodestar-beacon-node\
 		lodestar-beacon-node-follower\
 
+lodestar-ethjs-up:
+	docker compose --project-name eip4844-interop up -d\
+		ethereumjs\
+		lodestar-beacon-node\
+
 devnet-down:
 	docker compose --project-name eip4844-interop down -v
 
