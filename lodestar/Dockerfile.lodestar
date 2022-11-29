@@ -20,6 +20,7 @@ COPY ./lodestar/packages/state-transition/package.json /app/lodestar/packages/st
 COPY ./lodestar/packages/types/package.json /app/lodestar/packages/types/package.json
 COPY ./lodestar/packages/utils/package.json /app/lodestar/packages/utils/package.json
 COPY ./lodestar/packages/validator/package.json /app/lodestar/packages/validator/package.json
+copy ./lodestar/packages/reqresp/package.json /app/lodestar/packages/reqresp/package.json
 
 WORKDIR /app/lodestar
 
@@ -45,6 +46,9 @@ RUN yarn lerna run --scope @lodestar/utils build
 
 COPY ./lodestar/packages/config /app/lodestar/packages/config
 RUN yarn lerna run --scope @lodestar/config build
+
+COPY ./lodestar/packages/reqresp /app/lodestar/packages/reqresp
+RUN yarn lerna run --scope @lodestar/reqresp build
 
 COPY ./lodestar/packages/state-transition /app/lodestar/packages/state-transition
 RUN yarn lerna run --scope @lodestar/state-transition build
