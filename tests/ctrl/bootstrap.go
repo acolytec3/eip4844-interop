@@ -18,8 +18,9 @@ import (
 )
 
 var consensusClientEnvironments = map[string]*TestEnvironment{
-	"prysm":    newPrysmTestEnvironment(),
-	"lodestar": newLodestarTestEnvironment(),
+	"prysm":      newPrysmTestEnvironment(),
+	"lodestar":   newLodestarTestEnvironment(),
+	"typescript": newTsTestEnvironment(),
 	// "lighthouse": newLighthouseTestEnvironment(),
 }
 
@@ -47,8 +48,7 @@ func WaitForShardingFork() {
 	ctx := context.Background()
 
 	config := GetEnv().GethChainConfig
-	eip4844ForkBlock := config.ShardingForkBlock.Uint64()
-
+	eip4844ForkTime := config.ShardingForkTime
 	stallTimeout := 60 * time.Minute
 
 	client, err := GetExecutionClient(ctx)
@@ -65,7 +65,7 @@ func WaitForShardingFork() {
 			log.Fatalf("ethclient.BlockNumber: %v", err)
 		}
 
-		if bn >= eip4844ForkBlock {
+		if uint64(time.Now().Unix()) >= *eip4844ForkTime {
 			break
 		}
 		// Chain stall detection
@@ -177,6 +177,18 @@ func newLodestarTestEnvironment() *TestEnvironment {
 		GethChainConfig:    ReadGethChainConfig(),
 		GethNode:           NewGethNode(),
 		GethNode2:          NewGethNode2(),
+	}
+}
+
+func newTsTestEnvironment() *TestEnvironment {
+	clientName := "lodestar"
+	return &TestEnvironment{
+		BeaconChainConfig:  ReadBeaconChainConfig(),
+		BeaconNode:         NewBeaconNode(clientName),
+		BeaconNodeFollower: NewBeaconNodeFollower(clientName),
+		GethChainConfig:    ReadGethChainConfig(),
+		GethNode:           NewEthJSNode(),
+		GethNode2:          NewEthJSNode(),
 	}
 }
 

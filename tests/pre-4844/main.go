@@ -89,8 +89,8 @@ func main() {
 		log.Fatalf("Error getting block: %v", err)
 	}
 
-	eip4844Block := ctrl.GetEnv().GethChainConfig.ShardingForkBlock.Uint64()
-	if receipt.BlockNumber.Uint64() > eip4844Block {
+	eip4844Block := ctrl.GetEnv().GethChainConfig.ShardingForkTime
+	if receipt.BlockNumber.Uint64() > *eip4844Block {
 		// TODO: Avoid this issue by configuring the chain config at runtime
 		log.Fatalf("Test condition violation. Transaction must be included before eip4844 fork. Check the geth chain config")
 	}

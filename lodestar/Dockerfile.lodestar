@@ -31,7 +31,7 @@ COPY ./lodestar/lerna.json /app/lodestar/lerna.json
 COPY ./lodestar/tsconfig.build.json /app/lodestar/tsconfig.build.json
 COPY ./lodestar/tsconfig.json /app/lodestar/tsconfig.json
 COPY ./lodestar/types /app/lodestar/types
-COPY ./lodestar/packages/beacon-node/src/trusted_setup.json /app/lodestar/packages/beacon-node/lib/trusted_setup.json
+COPY ./trusted_setup.json /app/lodestar/packages/beacon-node/lib/trusted_setup.json
 
 # Copy and build each package independently to allow Docker to cache their builds in layers
 
